@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cloud Resume Page</title>
+    
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; max-width: 800px; margin: 40px auto; padding: 20px; }
+        header { border-bottom: 2px solid #eee; padding-bottom: 20px; }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Tevin Russell</h1>
+        <p>Aspiring Cloud Engineer</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>About Me</h2>
+            <p>Welcome to my personal site! I am currently working on the Cloud Resume Challenge to learn AWS infrastructure.</p>
+        </section>
+
+        <section>
+            <h2>Skills</h2>
+            <ul>
+                <li>AWS S3 & CloudFront</li>
+                <li>HTML & CSS</li>
+                <li>Python</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <!-- 1. The HTML element where the count will display -->
+        <p>Visitor Count: <span id="counter">Loading...</span></p>
+        <p>&copy; 2026 My Cloud Resume</p>
+    </footer>
+
+    <!-- 2. The JavaScript that talks to your Terraform API -->
+    <script>
+        // Paste your Terraform api_invoke_url between the single quotes below
+        const apiUrl = 'https://ipvlm0sn6d.execute-api.us-east-2.amazonaws.com/prod/visitor-count';
+
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('counter').innerText = data.visitor_count;
+            })
+            .catch(error => {
+                console.error('Error fetching visitor count:', error);
+                document.getElementById('counter').innerText = 'Unavailable';
+            });
+    </script>
+</body>
+</html>
